@@ -1,0 +1,15 @@
+{
+    "nextId":2,
+    "users":
+    [
+        {
+            "id":1,
+            "first name": "Mike",
+            "last name": "Bloomfield",
+            "username": "guitarhero.1941",
+            "email": "mike@bloomfiled.com",
+            "password": "likearollingstone",
+            "userSince": "2023-03-29T22:35:47.775Z"
+        }
+    ]
+}

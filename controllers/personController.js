@@ -1,4 +1,5 @@
 import personService from "../services/personService.js"
+import personSchema from "../utils/validators/personSchema.js";
 
 async function getPerson(req, res, next) {
     try {

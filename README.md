@@ -1,4 +1,4 @@
 # EXPRESS API BOILERPLATE
 
-## (Express documentation)[https://expressjs.com/]
+## [Express documentation](https://expressjs.com/)
 

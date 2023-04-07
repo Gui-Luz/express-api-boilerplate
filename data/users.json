@@ -1,14 +1,1 @@
-{
-    "nextId":2,
-    "users":
-    [
-        {
-            "id":1,
-            "first name": "Mike",
-            "last name": "Bloomfield",
-            "username": "guitarhero.1941",
-            "email": "mike@bloomfield.com",
-            "userSince": "2023-03-29T22:35:47.775Z"
-        }
-    ]
-}
+{"nextId":4,"users":[{"id":1,"first name":"Mike","last name":"Bloomfield","username":"guitarhero.1941","email":"mike@bloomfield.com","role":"user","user since":"2023-03-29T22:35:47.775Z"},{"id":2,"first name":"Ammy","last name":"Winehouse","username":"thesoulsinger","email":"ammy@winehouse.com","role":"admin","user since":"2023-04-29T22:35:47.775Z"},{"id":3,"first name":"Jim","last name":"Carrey","username":"carreyjim.1985","email":"carreyjim1978@comedian.com","role":"user","user since":"2023-04-07T16:50:06.367Z"}]}

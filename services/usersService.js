@@ -18,12 +18,15 @@ async function userPostService(user) {
 }
 
 async function userDeleteService(id) {
-    const data = await repository.readUsersJson();
-    const user = data.filter(d => d.id == id)
-    await repository.writeDeleteUsersJson(user.id);
-    return user
+    const users = await repository.readUsersJson()
+    const exists = users.filter(obj => obj.id == id)
+    if (exists.length > 0) {
+        await repository.writeDeleteUsersJson(id);
+    } else {
+        throw new Error('User not found.');
+    }
 }
-     
+
 
 export default {
     usersService,

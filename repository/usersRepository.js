@@ -29,7 +29,6 @@ async function writeDeleteUsersJson(id) {
         "users": data.users.filter(obj => obj.id != id)
     }
     fs.writeFile("./data/users.json", JSON.stringify(newData));
-    return id
 }
 
 export default {

@@ -47,9 +47,8 @@ async function deleteUser(req, res, next) {
     try {
         const { error, value } = schemas.idSchema.validate({ id: req.params.id });
         if (!error) {
-            const user = await usersService.userDeleteService(req.params.id);
-            console.log(user)
-            res.send({"deleted user": deletedId})
+            await usersService.userDeleteService(req.params.id);
+            res.send({"deleted user": req.params.id })
             
         }else {
             res.status(400).json({ error: error.details[0].message });

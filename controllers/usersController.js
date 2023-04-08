@@ -60,12 +60,15 @@ async function deleteUser(req, res, next) {
 
 async function putUser(req, res, next) {
     try {
-        const { error, value } = schemas.idSchema.validate({ id: req.params.id });
-        if (!error) {
-            const data = await usersService.userGetService(req.params.id);
-            res.send(data)
-            
-        }else {
+        const { errorId, valueID } = schemas.idSchema.validate({ id: req.params.id });
+        const { error, value } = schemas.userSchema.validate({ firstName: req.body.firstName,
+                                                                lastName: req.body.lastName,
+                                                                username: req.body.username,
+                                                                email: req.body.email});
+        if (!(errorId && error))  {
+            const updatedInfo = await usersService.userPutService(req.params.id, req.body);
+            res.send(updatedInfo)
+        } else {
             res.status(400).json({ error: error.details[0].message });
         }
     } catch(err) {

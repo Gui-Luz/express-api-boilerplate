@@ -31,8 +31,20 @@ async function writeDeleteUsersJson(id) {
     fs.writeFile("./data/users.json", JSON.stringify(newData));
 }
 
+async function writeUpdateUserJson(userNewInfo) {
+    const data = JSON.parse(await fs.readFile("./data/users.json"));
+    const newData = {
+        "nextId": data.nextId,
+        "users": data.users.filter(obj => obj.id != userNewInfo.id)
+    }
+    newData.users.push(userNewInfo);
+    fs.writeFile("./data/users.json", JSON.stringify(newData));
+    return userNewInfo
+}
+
 export default {
     readUsersJson,
     writeUsersJson,
-    writeDeleteUsersJson
+    writeDeleteUsersJson,
+    writeUpdateUserJson
 }

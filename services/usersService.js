@@ -27,10 +27,31 @@ async function userDeleteService(id) {
     }
 }
 
+async function userPutService(id, userNewInfo) {
+    const users = await repository.readUsersJson()
+    const userOldInfo = users.filter(obj => obj.id == id)
+    if (userOldInfo.length >0) {
+        const updatedInfo = {
+            'id': parseInt(id),
+            'first name': (userNewInfo.firstName ? userNewInfo.firstName : userOldInfo[0]['first name']),
+            'last name': (userNewInfo.lastName ? userNewInfo.lastName : userOldInfo[0]['last name']),
+            'username': (userNewInfo.username ? userNewInfo.username : userOldInfo[0]['username']),
+            'email': (userNewInfo.email ? userNewInfo.email : userOldInfo[0]['email']),
+            'role': userOldInfo[0]['role'],
+            'user_since': userOldInfo[0]['user since']
+        }
+        const newUserInfo = await repository.writeUpdateUserJson(updatedInfo)
+        return newUserInfo
+    } else {
+        throw new Error('User not found.');
+    }
+}
+
 
 export default {
     usersService,
     userGetService,
     userPostService,
-    userDeleteService
+    userDeleteService,
+    userPutService
 }

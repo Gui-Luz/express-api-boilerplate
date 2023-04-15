@@ -1,10 +1,13 @@
 export const swaggerDocument =
 {
-    "openapi": "3.0.1",
+    "openapi": "3.0.2",
     "info": {
       "title": "Express API Boilerplate",
       "version": "1.0.0",
-      "description": "An express api boilerplate for the lazy."
+      "description": "An express api boilerplate for the lazy.",
+      "contact": {
+        "url": "https://github.com/Gui-Luz/express-api-boilerplate"
+      }
     },
     "servers": [
       {
@@ -13,6 +16,47 @@ export const swaggerDocument =
       }
     ],
     "paths": {
+      "/auth": {
+        "post": {
+          "summary": "Authenticate a user using Basic Authentication",
+          "description": "This endpoint authenticates a user using Basic Authentication. The user must provide a valid username and password in the Authorization header.",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "Authentication successful. Returns a token for subsequent API requests.",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Authentication failed. Invalid credentials.",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "BasicAuth": []
+            }
+          ],
+        }
+      },
       "/users": {
         "get": {
           "summary": "Get all users",
@@ -30,7 +74,7 @@ export const swaggerDocument =
                 }
               }
             }
-          }
+          },
         },
         "post": {
           "summary": "Create a new user",
@@ -55,7 +99,12 @@ export const swaggerDocument =
                 }
               }
             }
-          }
+          },
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
         }
       },
       "/users/{id}": {
@@ -122,8 +171,13 @@ export const swaggerDocument =
             },
             "404": {
               "description": "User not found"
+            },
+          },
+          "security": [
+            {
+              "BearerAuth": []
             }
-          }
+          ],
         },
         "delete": {
           "summary": "Delete a user",
@@ -144,7 +198,12 @@ export const swaggerDocument =
             "404": {
               "description": "User not found"
             }
-          }
+          },
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
         }
       }
     },
@@ -170,7 +229,21 @@ export const swaggerDocument =
                         "example": "carreyjim1978@comedian.com"
                     },
                 }
-            }
+            },
+        },
+        "securitySchemes": {
+          "BasicAuth": {
+            "type": "http",
+            "scheme": "basic",
+            "in": "header",
+            "description": "Basic authorization"
+          },
+          "BearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT",
+            "description": "JWT Authorization header using the Bearer scheme. Example: 'Bearer {token}'"
+          },
         }
     }
 }

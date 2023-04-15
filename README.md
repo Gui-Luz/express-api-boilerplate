@@ -10,3 +10,7 @@ Usage:
 ```
 git clone https://github.com/Gui-Luz/express-api-boilerplate.git
 ```
+
+```
+nodemon index.js
+```

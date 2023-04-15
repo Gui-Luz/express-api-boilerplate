@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 export const usersRouter = express.Router();
 
-const privatekey = 'key'
+const privatekey = process.env.JWT_SECRET
 
 usersRouter.use((req, res, next) => {
     next()

@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import swaggerUi from "swagger-ui-express";
+import readline from "readline";
 import { swaggerDocument } from "./documentation/swaggerDocumentation.js"
 
 import { usersRouter } from "./routes/usersRouter.js";
@@ -20,5 +21,10 @@ app.use('/users', usersRouter);
 app.use('/auth', authRouter)
 
 app.listen(3000, () => {
-    logger.info(`${new Date().toISOString()} API listening on port 3000`)
-})
+    if (process.env.JWT_SECRET) {
+        logger.info(`${new Date().toISOString()} API listening on port 3000`);
+      } else {
+        console.log("JWT_SECRET is not defined.");
+        process.exit()
+    }
+});

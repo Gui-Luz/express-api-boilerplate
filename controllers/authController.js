@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-const privatekey = 'key'
+const privatekey = process.env.JWT_SECRET
 
 async function auth(req, res, next) {
     try {

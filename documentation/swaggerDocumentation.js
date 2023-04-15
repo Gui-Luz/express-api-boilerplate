@@ -7,7 +7,17 @@ export const swaggerDocument =
       "description": "An express api boilerplate for the lazy.",
       "contact": {
         "url": "https://github.com/Gui-Luz/express-api-boilerplate"
-      }
+      },
+      "tags": [
+        {
+          "name": "Users",
+          "description": "Endpoints related to users"
+        },
+        {
+          "name": "Auth",
+          "description": "Basic authorization endpoint"
+        }
+      ],
     },
     "servers": [
       {
@@ -19,6 +29,7 @@ export const swaggerDocument =
       "/auth": {
         "post": {
           "summary": "Authenticate a user using Basic Authentication",
+          "tags": ["Auth"],
           "description": "This endpoint authenticates a user using Basic Authentication. The user must provide a valid username and password in the Authorization header.",
           "consumes": [
             "application/json"
@@ -60,6 +71,7 @@ export const swaggerDocument =
       "/users": {
         "get": {
           "summary": "Get all users",
+          "tags": ["Users"],
           "responses": {
             "200": {
               "description": "Successful response",
@@ -78,6 +90,7 @@ export const swaggerDocument =
         },
         "post": {
           "summary": "Create a new user",
+          "tags": ["Users"],
           "requestBody": {
             "required": true,
             "content": {
@@ -110,6 +123,7 @@ export const swaggerDocument =
       "/users/{id}": {
         "get": {
           "summary": "Get a user by ID",
+          "tags": ["Users"],
           "parameters": [
             {
               "in": "path",
@@ -138,6 +152,7 @@ export const swaggerDocument =
         },
         "put": {
           "summary": "Update a user",
+          "tags": ["Users"],
           "parameters": [
             {
               "in": "path",
@@ -181,6 +196,7 @@ export const swaggerDocument =
         },
         "delete": {
           "summary": "Delete a user",
+          "tags": ["Users"],
           "parameters": [
             {
               "in": "path",

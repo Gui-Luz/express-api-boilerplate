@@ -12,5 +12,6 @@ git clone https://github.com/Gui-Luz/express-api-boilerplate.git
 ```
 
 ```
-nodemon index.js
+docker build . -t express-api-boilerplate:latest
+docker run -p 3000:3000 express-api-boilerplate
 ```

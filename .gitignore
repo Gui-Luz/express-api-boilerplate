@@ -1,3 +1,4 @@
 /node_modules
 .gitignore
-express-api-boilerplate.log
+api.log
+/utils/env/env.txt

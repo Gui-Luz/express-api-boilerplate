@@ -1,41 +1,40 @@
-import Sequelize from 'sequelize'
-import db from '../repositories/db.js'
+import Sequelize from 'sequelize';
+import db from '../repositories/db.js';
 
 const User = db.define('users', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
-    primaryKey: true
+    primaryKey: true,
   },
   username: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   password: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   firstName: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   lastName: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   email: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   role: {
     type: Sequelize.STRING,
-    allowNull: false
-  }
+    allowNull: false,
+  },
 }, {
   schema: 'admin',
-  underscored: true
-}
-)
+  underscored: true,
+});
 
-export default User
+export default User;

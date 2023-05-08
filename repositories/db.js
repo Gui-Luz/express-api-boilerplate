@@ -7,9 +7,9 @@ const sequelize = new Sequelize(
     dialect: 'postgres',
     underscored: true,
     define: {
-      timestamps: true
-    }
-  }
-)
+      timestamps: true,
+    },
+  },
+);
 
-export default sequelize
+export default sequelize;

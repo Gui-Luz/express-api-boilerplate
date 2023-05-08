@@ -1,67 +1,67 @@
-import User from '../models/user.models.js'
+import User from '../models/user.models.js';
 
-async function insertUser (user) {
+async function insertUser(user) {
   try {
-    return await User.create(user)
+    return await User.create(user);
   } catch (err) {
-    throw err
+    throw err;
   }
 }
 
-async function getUsers () {
+async function getUsers() {
   try {
-    return await User.findAll()
+    return await User.findAll();
   } catch (err) {
-    throw err
+    throw err;
   }
 }
 
-async function getUser (id) {
+async function getUser(id) {
   try {
-    return await User.findByPk(id)
+    return await User.findByPk(id);
   } catch (err) {
-    throw err
+    throw err;
   }
 }
 
-async function getUserByEmail (email) {
+async function getUserByEmail(email) {
   return await User.findOne({
     where: {
-      email
-    }
-  })
+      email,
+    },
+  });
 }
 
-async function getUserByUsername (username) {
+async function getUserByUsername(username) {
   return await User.findOne({
     where: {
-      username
-    }
-  })
+      username,
+    },
+  });
 }
 
-async function deleteUser (id) {
+async function deleteUser(id) {
   try {
     return await User.destroy({
       where: {
-        id
-      }
-    })
+        id,
+      },
+    });
   } catch (err) {
-    throw err
+    throw err;
   }
 }
 
-async function updateUser (user) {
+async function updateUser(user) {
   try {
     await User.update(user, {
       where: {
-        id: user.id
-      }
-    })
-    return getUser(user.id)
+        id: user.id,
+      },
+    });
+    return getUser(user.id);
   } catch (err) {
-    throw err
+    throw err;
   }
 }
 
@@ -72,5 +72,5 @@ export default {
   deleteUser,
   updateUser,
   getUserByUsername,
-  getUserByEmail
-}
+  getUserByEmail,
+};
